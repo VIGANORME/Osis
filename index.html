@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran OSIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-top: 15px;
+        }
+
+        .logo {
+            width: 100px; /* Ukuran disesuaikan dengan contoh */
+            height: 100px; /* Ukuran disesuaikan dengan contoh */
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+            min-width: 20px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #2e7d32;
+        }
+
+        .success-message h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo_osis.jpg" alt="Logo OSIS" class="logo">
+            <h1>FORMULIR PENDAFTARAN OSIS</h1>
+        </div>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="kelas">Kelas:</label>
+                <input type="text" id="kelas" name="kelas" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="asal_sekolah">Asal Sekolah (SMP):</label>
+                <input type="text" id="asal_sekolah" name="asal_sekolah" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="alamat">Alamat Rumah:</label>
+                <textarea id="alamat" name="alamat" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="ttl">Tempat, Tanggal Lahir:</label>
+                <input type="text" id="ttl" name="ttl" placeholder="Contoh: Jakarta, 17 Agustus 2005" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telpon">Nomor Telepon/HP:</label>
+                <input type="tel" id="telpon" name="telpon" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hobi">Hobi:</label>
+                <input type="text" id="hobi" name="hobi" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="riwayat_penyakit">Riwayat Penyakit (jika ada):</label>
+                <textarea id="riwayat_penyakit" name="riwayat_penyakit" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="tujuan">Tujuan Masuk OSIS:</label>
+                <textarea id="tujuan" name="tujuan" rows="5" required></textarea>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="persetujuan" name="persetujuan" required>
+                <label for="persetujuan">Saya menyatakan bahwa data yang saya isi adalah benar dan siap bertanggung jawab jika terdapat kesalahan.</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Daftar Sekarang</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <h2>Pendaftaran Berhasil!</h2>
+            <p>Terima kasih telah mendaftar. Data Anda telah kami terima.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Ganti dengan webhook URL Discord Anda
+            const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/your-webhook-url-here';
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Mengumpulkan data form
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    kelas: document.getElementById('kelas').value,
+                    asal_sekolah: document.getElementById('asal_sekolah').value,
+                    alamat: document.getElementById('alamat').value,
+                    ttl: document.getElementById('ttl').value,
+                    telpon: document.getElementById('telpon').value,
+                    hobi: document.getElementById('hobi').value,
+                    riwayat_penyakit: document.getElementById('riwayat_penyakit').value,
+                    tujuan: document.getElementById('tujuan').value,
+                    waktu_pendaftaran: new Date().toLocaleString()
+                };
+                
+                // Mengirim data ke Discord
+                sendToDiscord(formData);
+                
+                // Menampilkan pesan sukses
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Reset form (opsional)
+                form.reset();
+            });
+            
+            function sendToDiscord(data) {
+                // Format pesan untuk Discord
+                const message = {
+                    content: '**PENDAFTARAN OSIS BARU**',
+                    embeds: [{
+                        title: 'Data Pendaftar',
+                        color: 3447003, // Warna biru
+                        fields: [
+                            { name: 'Nama Lengkap', value: data.nama, inline: true },
+                            { name: 'Kelas', value: data.kelas, inline: true },
+                            { name: 'Asal Sekolah (SMP)', value: data.asal_sekolah, inline: true },
+                            { name: 'Alamat Rumah', value: data.alamat },
+                            { name: 'Tempat, Tanggal Lahir', value: data.ttl, inline: true },
+                            { name: 'Nomor Telepon', value: data.telpon, inline: true },
+                            { name: 'Hobi', value: data.hobi },
+                            { name: 'Riwayat Penyakit', value: data.riwayat_penyakit || 'Tidak ada' },
+                            { name: 'Tujuan Masuk OSIS', value: data.tujuan },
+                            { name: 'Waktu Pendaftaran', value: data.waktu_pendaftaran }
+                        ],
+                        footer: {
+                            text: 'Pendaftaran OSIS'
+                        }
+                    }]
+                };
+                
+                // Mengirim ke webhook Discord
+                fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(message)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('Gagal mengirim ke Discord');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
